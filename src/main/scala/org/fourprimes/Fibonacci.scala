@@ -7,11 +7,13 @@ import akka.actor.Actor
 import scala.annotation.tailrec
 import akka.remote.routing.RemoteRouterConfig
 import akka.routing.RoundRobinRouter
+import com.typesafe.config.ConfigFactory
 
 object Fibonacci extends App {
 
   // Create an Akka system
-  val system = ActorSystem("mac-sys")
+  val config = ConfigFactory.load()
+  val system = ActorSystem("mac-sys", config.getConfig("mac-sys").withFallback(config))
 
   class PrintlnActor extends Actor {
     def receive = {
@@ -48,7 +50,7 @@ object Fibonacci extends App {
   1 to 10 foreach {
     i => routerRemote ! i
   }
-  
+
   system.shutdown()
 
 }

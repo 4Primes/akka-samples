@@ -2,11 +2,13 @@ package org.fourprimes
 
 import akka.actor.ActorSystem
 import akka.actor.Actor
+import com.typesafe.config.ConfigFactory
 
 object FibonacciClient extends App {
 
   // Create an Akka system
-  val system = ActorSystem("ubuntu-sys")
+  val config = ConfigFactory.load()
+  val system = ActorSystem("ubuntu-sys", config.getConfig("ubuntu-sys").withFallback(config))
 
   class PrintlnActor extends Actor {
     def receive = {
