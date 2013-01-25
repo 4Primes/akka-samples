@@ -39,8 +39,8 @@ object Fibonacci extends App {
   }
 
   val addresses = Seq(
-    AddressFromURIString("akka://mac-sys@192.168.2.4:2552"),
-    AddressFromURIString("akka://ubuntu-sys@192.168.2.5:2552"))
+    AddressFromURIString("akka://mac-sys@192.168.1.4:2552"),
+    AddressFromURIString("akka://ubuntu-sys@192.168.1.5:2552"))
 
   val routerRemote = system.actorOf(Props[PrintlnActor].withRouter(
     RemoteRouterConfig(RoundRobinRouter(5), addresses)))
@@ -48,5 +48,7 @@ object Fibonacci extends App {
   1 to 10 foreach {
     i => routerRemote ! i
   }
+  
+  system.shutdown()
 
 }
