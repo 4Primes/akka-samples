@@ -17,6 +17,4 @@ object FibonacciClient extends App {
     }
   }
 
-  system.shutdown()
-
 }
