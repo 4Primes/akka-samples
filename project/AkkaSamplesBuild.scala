@@ -1,13 +1,13 @@
 import sbt._
 import sbt.Keys._
 
-object PiBuild extends Build {
+object AkkaSamplesBuild extends Build {
 
-  lazy val pi = Project(
-    id = "pi",
+  lazy val akkaSamples = Project(
+    id = "akkaSamples",
     base = file("."),
     settings = Project.defaultSettings ++ Seq(
-      name := "pi",
+      name := "akka-samples",
       organization := "org.fourprimes",
       version := "0.1-SNAPSHOT",
       scalaVersion := "2.10.0",
