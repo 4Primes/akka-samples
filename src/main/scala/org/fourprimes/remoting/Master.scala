@@ -1,4 +1,4 @@
-package org.fourprimes.remote
+package org.fourprimes.remoting
 
 import com.typesafe.config.ConfigFactory
 import akka.actor.ActorSystem
@@ -11,6 +11,7 @@ object Master extends App {
   val system = ActorSystem("master-sys", config.getConfig("master-sys").withFallback(config))
 
   val actor = system.actorOf(Props[PrintlnActor], "printlnActor")
-  actor ! "Hello from master"
+  
+  for( ln <- io.Source.stdin.getLines ) actor ! ln
 
 }

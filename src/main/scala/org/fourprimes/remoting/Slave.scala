@@ -1,4 +1,4 @@
-package org.fourprimes.remote
+package org.fourprimes.remoting
 
 import akka.actor.Actor
 import com.typesafe.config.ConfigFactory
