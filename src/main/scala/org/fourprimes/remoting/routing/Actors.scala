@@ -50,7 +50,7 @@ class MasterActor extends Actor {
 
   val reducer = context.actorOf(Props[ReduceActor], name = "reduceActor")
 
-  val nrOfElements = 2000000
+  val nrOfElements = 200000
   var nrOfResults = 0
   val values = Array.fill(nrOfElements)(Random.nextInt(70))
 
