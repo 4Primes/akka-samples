@@ -31,7 +31,7 @@ object Actors {
 
       case Select(key) => {
         val newObj = MongoDBObject("key" -> key)
-        sender ! mongoColl.findOne(newObj).getOrElse("None")
+        sender ! mongoColl.findOne(newObj).getOrElse("None").toString()
       }
     }
 
@@ -53,7 +53,7 @@ object Actors {
     def receive = {
       case Save => for (value <- values) mongoDBRouter ! Insert(value._1, value._2)
       case Get => for (value <- values) mongoDBRouter ? Select(value._1) onSuccess {
-        case v:DBObject => println("%s -> %s".format(value._1, v))
+        case v: String => println("%s -> %s".format(value._1, v))
       }
     }
   }
