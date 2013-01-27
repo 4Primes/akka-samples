@@ -13,11 +13,12 @@ object AkkaSamplesBuild extends Build {
       scalaVersion := "2.10.0",
       resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases",
       libraryDependencies ++= Seq(
-        "com.typesafe.akka" % "akka-actor" % "2.1.0" cross CrossVersion.binary,
-        "com.typesafe.akka" % "akka-remote" % "2.1.0" cross CrossVersion.binary,
+        "com.typesafe.akka" %% "akka-actor" % "2.1.0",
+        "com.typesafe.akka" %% "akka-remote" % "2.1.0",
         "com.typesafe.slick" %% "slick" % "1.0.0-RC2",
         "org.slf4j" % "slf4j-nop" % "1.6.4",
-        "postgresql" % "postgresql" % "8.4-701.jdbc4"
+        "postgresql" % "postgresql" % "8.4-701.jdbc4",
+        "org.mongodb" %% "casbah" % "2.5.0"
       )
     )
   )
