@@ -13,7 +13,7 @@ case class MapValue(value: Int) extends Message
 case class ReduceValue(value: Int) extends Message
 case class MapResult(value: Int) extends Message
 case class ReduceResult(value: Int) extends Message
-case class Calculate extends Message
+case class Calculate() extends Message
 
 class MapActor extends Actor {
 

@@ -12,8 +12,8 @@ import akka.util.Timeout
 
 case class Insert(key: String, value: String)
 case class Select(key: String)
-case class Save
-case class Get
+case class Save()
+case class Get()
 
 object Actors {
   import scala.slick.session.{ Database, Session }
